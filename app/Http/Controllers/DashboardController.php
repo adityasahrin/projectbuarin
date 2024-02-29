@@ -13,16 +13,16 @@ class DashboardController extends Controller
         $distinctYears = Dashboard::distinct()->pluck('Tahun')->toArray();
 
         $fakultasDataGraph = [];
-        $fakultasList = ['Ekonomi', 'IlkomSains', 'Teknik', 'FIPB', 'FKIP'];
+        $fakultasList = ['Ekonomi', 'ILKOM_SAINS', 'Teknik', 'FIPB', 'FKIP'];
 
         foreach ($fakultasList as $fakultas) {
             $data = Dashboard::select(
                 'Tahun',
-                DB::raw('SUM(CASE WHEN Nilai_Huruf = "A" THEN 1 ELSE 0 END) AS A_count'),
-                DB::raw('SUM(CASE WHEN Nilai_Huruf = "B" THEN 1 ELSE 0 END) AS B_count'),
-                DB::raw('SUM(CASE WHEN Nilai_Huruf = "C" THEN 1 ELSE 0 END) AS C_count'),
-                DB::raw('SUM(CASE WHEN Nilai_Huruf = "D" THEN 1 ELSE 0 END) AS D_count'),
-                DB::raw('SUM(CASE WHEN Nilai_Huruf = "E" THEN 1 ELSE 0 END) AS E_count'),
+                DB::raw('SUM(CASE WHEN Huruf = "A" THEN 1 ELSE 0 END) AS A_count'),
+                DB::raw('SUM(CASE WHEN Huruf = "B" THEN 1 ELSE 0 END) AS B_count'),
+                DB::raw('SUM(CASE WHEN Huruf = "C" THEN 1 ELSE 0 END) AS C_count'),
+                DB::raw('SUM(CASE WHEN Huruf = "D" THEN 1 ELSE 0 END) AS D_count'),
+                DB::raw('SUM(CASE WHEN Huruf = "E" THEN 1 ELSE 0 END) AS E_count'),
                 DB::raw('COUNT(*) AS total_count')
             )
                 ->where('Fakultas', $fakultas)
@@ -44,11 +44,11 @@ class DashboardController extends Controller
         $fakultasDataTable = [];
         $data = Dashboard::select(
             'Tahun',
-            DB::raw('SUM(CASE WHEN Nilai_Huruf = "A" THEN 1 ELSE 0 END) AS A_count'),
-            DB::raw('SUM(CASE WHEN Nilai_Huruf = "B" THEN 1 ELSE 0 END) AS B_count'),
-            DB::raw('SUM(CASE WHEN Nilai_Huruf = "C" THEN 1 ELSE 0 END) AS C_count'),
-            DB::raw('SUM(CASE WHEN Nilai_Huruf = "D" THEN 1 ELSE 0 END) AS D_count'),
-            DB::raw('SUM(CASE WHEN Nilai_Huruf = "E" THEN 1 ELSE 0 END) AS E_count'),
+            DB::raw('SUM(CASE WHEN Huruf = "A" THEN 1 ELSE 0 END) AS A_count'),
+            DB::raw('SUM(CASE WHEN Huruf = "B" THEN 1 ELSE 0 END) AS B_count'),
+            DB::raw('SUM(CASE WHEN Huruf = "C" THEN 1 ELSE 0 END) AS C_count'),
+            DB::raw('SUM(CASE WHEN Huruf = "D" THEN 1 ELSE 0 END) AS D_count'),
+            DB::raw('SUM(CASE WHEN Huruf = "E" THEN 1 ELSE 0 END) AS E_count'),
             DB::raw('COUNT(*) AS total_count')
         )
             ->where('Fakultas', $fakultas)

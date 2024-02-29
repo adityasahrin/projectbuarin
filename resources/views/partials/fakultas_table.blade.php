@@ -19,7 +19,7 @@
                 <td>{{ number_format($item->C_percentage, 2) }}%</td>
                 <td>{{ number_format($item->D_percentage, 2) }}%</td>
                 <td>{{ number_format($item->E_percentage, 2) }}%</td>
-                <td>{{ number_format($item->A_percentage + $item->B_percentage, 2) }}</td>
+                <td>{{ number_format($item->A_percentage + $item->B_percentage, 2) }}%</td>
             </tr>
         @endforeach
     </tbody>
