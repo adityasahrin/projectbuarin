@@ -5,12 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
         var fakultas = container.dataset.fakultas;
         var chartData = JSON.parse(container.dataset.chartData);
 
-        // Initialize chart using fakultas and chartData
         initChart(container.id, chartData);
     });
 });
 
-// Function to initialize Chart.js for a given canvas id and data
 function initChart(canvasId, data) {
     var ctx = document.getElementById(canvasId);
     new Chart(ctx, {

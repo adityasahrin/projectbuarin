@@ -10,10 +10,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $distinctYears = Dashboard::distinct()->pluck('Tahun')->toArray();
-
         $fakultasDataGraph = [];
-        $fakultasList = ['Ekonomi', 'ILKOM_SAINS', 'Teknik', 'FIPB', 'FKIP'];
+        $fakultasList = ['Ekonomi', 'ILKOM SAINS', 'Teknik', 'FIPB', 'FKIP'];
 
         foreach ($fakultasList as $fakultas) {
             $data = Dashboard::select(
@@ -33,7 +31,6 @@ class DashboardController extends Controller
         }
 
         return view('dashboard', [
-            'distinctYears' => $distinctYears,
             'fakultasDataGraph' => $fakultasDataGraph,
             'fakultasList' => $fakultasList,
         ]);
